@@ -1,17 +1,16 @@
-import { Title } from '@mantine/core';
-import type { MetaFunction } from '@remix-run/node';
+import { redirect, type MetaFunction } from '@remix-run/node';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'My App' },
+    { title: 'Fast Opinions' },
     { name: 'description', content: 'Welcome to Remix!' },
   ];
 };
 
+export async function loader() {
+  throw redirect('/login');
+}
+
 export default function Index() {
-  return (
-    <div>
-      <Title order={1}>Hello World</Title>
-    </div>
-  );
+  return null;
 }
